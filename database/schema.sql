@@ -193,10 +193,11 @@ CREATE TABLE question_tags (
 );
 
 -- Insert default sections
-INSERT INTO sections (name, description) VALUES
-('quantitative', 'Quantitative Aptitude - Mathematics and numerical problem solving'),
-('logical', 'Logical Reasoning - Analytical and logical thinking'),
-('di', 'Data Interpretation - Analyzing and interpreting data');
+INSERT INTO sections (id, name, description) VALUES
+(1, 'Quantitative Aptitude', 'Quantitative Aptitude - Mathematics and numerical problem solving'),
+(2, 'Logical Reasoning', 'Logical Reasoning - Analytical and logical thinking'),
+(3, 'Data Interpretation', 'Data Interpretation - Analyzing and interpreting data'),
+(4, 'Verbal Ability', 'Verbal Ability - English language and comprehension');
 
 -- Insert topics for Quantitative Aptitude
 INSERT INTO topics (section_id, name, description) VALUES
