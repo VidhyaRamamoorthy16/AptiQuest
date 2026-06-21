@@ -1,0 +1,17 @@
+{
+  "name": "aptitudeweb",
+  "version": "1.0.0",
+  "description": "Complete Aptitude Preparation Website",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "start:backend": "cd backend && npm run dev",
+    "start:frontend": "cd frontend && npm run dev",
+    "setup": "npm run install-all && echo '✅ All dependencies installed!'",
+    "check:mysql": "mysql -u root -e 'SELECT 1;' || echo '⚠️  MySQL not running. Start with: brew services start mysql'",
+    "check:db": "mysql -u root aptitudeweb -e 'SELECT COUNT(*) as questions FROM questions;'"
+  },
+  "keywords": ["aptitude", "education", "practice"],
+  "author": "",
+  "license": "MIT"
+}
+

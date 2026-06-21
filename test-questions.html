@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Questions API</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .question { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        .option { margin: 5px 0; }
+        .difficulty { padding: 2px 8px; border-radius: 3px; color: white; font-size: 12px; }
+        .easy { background-color: #10b981; }
+        .medium { background-color: #f59e0b; }
+        .hard { background-color: #ef4444; }
+    </style>
+</head>
+<body>
+    <h1>Questions Test</h1>
+    <div id="questions"></div>
+
+    <script>
+        fetch('/api/questions?limit=5')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('questions');
+                if (data.success) {
+                    data.questions.forEach(q => {
+                        const div = document.createElement('div');
+                        div.className = 'question';
+                        div.innerHTML = `
+                            <h3>Q${q.id}: ${q.question}</h3>
+                            <span class="difficulty ${q.difficulty}">${q.difficulty}</span>
+                            <p><strong>Topic:</strong> ${q.topic_name} | <strong>Section:</strong> ${q.section_name}</p>
+                            <div class="options">
+                                ${q.options.map(opt => `<div class="option">${opt.option_label}: ${opt.option_text}</div>`).join('')}
+                            </div>
+                            <p><strong>Correct Answer:</strong> ${q.correct_answer}</p>
+                            <hr>
+                            <p><strong>Solution:</strong> ${q.solution}</p>
+                        `;
+                        container.appendChild(div);
+                    });
+                } else {
+                    container.innerHTML = '<p>Error loading questions</p>';
+                }
+            })
+            .catch(error => {
+                document.getElementById('questions').innerHTML = '<p>Error: ' + error.message + '</p>';
+            });
+    </script>
+</body>
+</html>

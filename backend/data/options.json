@@ -1,0 +1,66 @@
+[
+  {"question_id": 1001, "option_label": "A", "option_text": "11"},
+  {"question_id": 1001, "option_label": "B", "option_text": "13"},
+  {"question_id": 1001, "option_label": "C", "option_text": "15"},
+  {"question_id": 1001, "option_label": "D", "option_text": "17"},
+  
+  {"question_id": 1002, "option_label": "A", "option_text": "36"},
+  {"question_id": 1002, "option_label": "B", "option_text": "48"},
+  {"question_id": 1002, "option_label": "C", "option_text": "72"},
+  {"question_id": 1002, "option_label": "D", "option_text": "96"},
+  
+  {"question_id": 1003, "option_label": "A", "option_text": "32"},
+  {"question_id": 1003, "option_label": "B", "option_text": "48"},
+  {"question_id": 1003, "option_label": "C", "option_text": "64"},
+  {"question_id": 1003, "option_label": "D", "option_text": "96"},
+  
+  {"question_id": 1004, "option_label": "A", "option_text": "320 marks"},
+  {"question_id": 1004, "option_label": "B", "option_text": "340 marks"},
+  {"question_id": 1004, "option_label": "C", "option_text": "360 marks"},
+  {"question_id": 1004, "option_label": "D", "option_text": "380 marks"},
+  
+  {"question_id": 1005, "option_label": "A", "option_text": "Rs. 800"},
+  {"question_id": 1005, "option_label": "B", "option_text": "Rs. 960"},
+  {"question_id": 1005, "option_label": "C", "option_text": "Rs. 1000"},
+  {"question_id": 1005, "option_label": "D", "option_text": "Rs. 1120"},
+  
+  {"question_id": 1006, "option_label": "A", "option_text": "Rs. 1000"},
+  {"question_id": 1006, "option_label": "B", "option_text": "Rs. 1100"},
+  {"question_id": 1006, "option_label": "C", "option_text": "Rs. 1200"},
+  {"question_id": 1006, "option_label": "D", "option_text": "Rs. 1300"},
+  
+  {"question_id": 1007, "option_label": "A", "option_text": "6 days"},
+  {"question_id": 1007, "option_label": "B", "option_text": "4 2/7 days"},
+  {"question_id": 1007, "option_label": "C", "option_text": "5 days"},
+  {"question_id": 1007, "option_label": "D", "option_text": "7 days"},
+  
+  {"question_id": 1008, "option_label": "A", "option_text": "Train A is faster"},
+  {"question_id": 1008, "option_label": "B", "option_text": "Train B is faster"},
+  {"question_id": 1008, "option_label": "C", "option_text": "Both have same speed"},
+  {"question_id": 1008, "option_label": "D", "option_text": "Cannot determine"},
+  
+  {"question_id": 1009, "option_label": "A", "option_text": "30"},
+  {"question_id": 1009, "option_label": "B", "option_text": "36"},
+  {"question_id": 1009, "option_label": "C", "option_text": "42"},
+  {"question_id": 1009, "option_label": "D", "option_text": "48"},
+  
+  {"question_id": 1010, "option_label": "A", "option_text": "Sister"},
+  {"question_id": 1010, "option_label": "B", "option_text": "Wife"},
+  {"question_id": 1010, "option_label": "C", "option_text": "Mother"},
+  {"question_id": 1010, "option_label": "D", "option_text": "Daughter"},
+  
+  {"question_id": 1011, "option_label": "A", "option_text": "North"},
+  {"question_id": 1011, "option_label": "B", "option_text": "East"},
+  {"question_id": 1011, "option_label": "C", "option_text": "South"},
+  {"question_id": 1011, "option_label": "D", "option_text": "West"},
+  
+  {"question_id": 1012, "option_label": "A", "option_text": "180 units"},
+  {"question_id": 1012, "option_label": "B", "option_text": "288 units"},
+  {"question_id": 1012, "option_label": "C", "option_text": "346 units"},
+  {"question_id": 1012, "option_label": "D", "option_text": "415 units"},
+  
+  {"question_id": 1013, "option_label": "A", "option_text": "60°"},
+  {"question_id": 1013, "option_label": "B", "option_text": "90°"},
+  {"question_id": 1013, "option_label": "C", "option_text": "120°"},
+  {"question_id": 1013, "option_label": "D", "option_text": "150°"}
+]

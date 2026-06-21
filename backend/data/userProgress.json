@@ -1,0 +1,37 @@
+{
+  "completedQuestions": [1001, 1003, 1005, 1007, 1009],
+  "userStats": {
+    "totalSolved": 7,
+    "accuracy": 71,
+    "avgTime": 42,
+    "streak": 3,
+    "totalSolvedTrend": { "isPositive": true, "value": 12 },
+    "accuracyTrend": { "isPositive": true, "value": 5 },
+    "avgTimeTrend": { "isPositive": false, "value": 8 },
+    "streakTrend": { "isPositive": true, "value": 2 }
+  },
+  "bookmarkedQuestions": [1001, 1002, 1005, 1010],
+  "recentActivity": [
+    {
+      "questionId": 1007,
+      "topic": "Time & Work",
+      "timestamp": "2026-01-05T10:30:00Z",
+      "isCorrect": true,
+      "timeSpent": 38
+    },
+    {
+      "questionId": 1003,
+      "topic": "Surds and Indices",
+      "timestamp": "2026-01-05T09:45:00Z",
+      "isCorrect": false,
+      "timeSpent": 62
+    },
+    {
+      "questionId": 1005,
+      "topic": "Simple Interest",
+      "timestamp": "2026-01-05T09:15:00Z",
+      "isCorrect": true,
+      "timeSpent": 45
+    }
+  ]
+}

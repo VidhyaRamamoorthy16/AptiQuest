@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .question {
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .difficulty {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .easy { background: #d4edda; color: #155724; }
+        .medium { background: #fff3cd; color: #856404; }
+        .hard { background: #f8d7da; color: #721c24; }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .option {
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            background: white;
+        }
+        .nav {
+            background: #333;
+            color: white;
+            padding: 10px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 8px 8px 0 0;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/">Home</a>
+        <a href="/practice">Practice</a>
+        <a href="/practice/quantitative">Quantitative</a>
+        <a href="/practice/logical">Logical</a>
+        <a href="/practice/di">Data Interpretation</a>
+    </div>
+
+    <div class="container">
+        <h1>API Test - Practice Questions</h1>
+        <div id="loading" class="loading">Loading questions...</div>
+        <div id="questions" style="display: none;">
+            <h2>Questions for <span id="section-name"></span></h2>
+            <div id="questions-list"></div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchQuestions(section = 'quantitative') {
+            try {
+                const response = await fetch(`/api/questions?section=${section}&limit=10`);
+                const data = await response.json();
+                
+                console.log('API Response:', data);
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('questions').style.display = 'block';
+                document.getElementById('section-name').textContent = section.charAt(0).toUpperCase() + section.slice(1);
+                
+                const questionsList = document.getElementById('questions-list');
+                questionsList.innerHTML = '';
+                
+                if (data.success && data.questions) {
+                    data.questions.forEach((question, index) => {
+                        const questionDiv = document.createElement('div');
+                        questionDiv.className = 'question';
+                        
+                        const optionsHtml = question.options.map(option => 
+                            `<div class="option">${option.option_label}. ${option.option_text}</div>`
+                        ).join('');
+                        
+                        questionDiv.innerHTML = `
+                            <div class="header">
+                                <span class="difficulty ${question.difficulty}">${question.difficulty?.toUpperCase()}</span>
+                                <span>${question.topic_name}</span>
+                                <span>⏱️ ${question.estimated_time || 60}s</span>
+                            </div>
+                            <h3>${index + 1}. ${question.question}</h3>
+                            <div class="options">${optionsHtml}</div>
+                            <div style="margin-top: 15px;">
+                                <a href="/question/${question.id}" style="
+                                    background: #007bff;
+                                    color: white;
+                                    padding: 10px 20px;
+                                    text-decoration: none;
+                                    border-radius: 5px;
+                                    display: inline-block;
+                                ">Solve Question →</a>
+                            </div>
+                        `;
+                        
+                        questionsList.appendChild(questionDiv);
+                    });
+                } else {
+                    questionsList.innerHTML = '<p style="color: red; text-align: center;">Failed to load questions</p>';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('loading').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+            }
+        }
+        
+        // Get current section from URL
+        const path = window.location.pathname;
+        let section = 'quantitative';
+        
+        if (path.includes('/practice/')) {
+            section = path.split('/practice/')[1] || 'quantitative';
+        }
+        
+        fetchQuestions(section);
+        
+        // Add click handlers for navigation
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                if (href.includes('/practice/')) {
+                    const newSection = href.split('/practice/')[1];
+                    if (newSection) {
+                        fetchQuestions(newSection);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
