@@ -178,7 +178,8 @@ const getQuestions = async (req, res) => {
     // Get options for each question
     for (let q of questions) {
       const [options] = await pool.execute(`
-        SELECT option_label as option_label, option_text as option_text
+        SELECT option_label as option_label, option_text as option_text,
+               option_label as optionLetter, option_text as optionText
         FROM question_options
         WHERE question_id = ?
         ORDER BY option_label
@@ -265,7 +266,9 @@ const getQuestionById = async (req, res) => {
       section_name: question.section_name,
       options: options.map(o => ({
         option_label: o.option_label,
-        option_text: o.option_text
+        option_text: o.option_text,
+        optionLetter: o.option_label,
+        optionText: o.option_text
       }))
     };
 
