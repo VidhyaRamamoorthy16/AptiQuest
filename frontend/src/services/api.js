@@ -20,3 +20,8 @@ api.interceptors.request.use((config) => {
 
 export default api
 
+// Ping backend every 14 mins to keep it alive
+setInterval(() => {
+  fetch('https://aptiquest-ke42.onrender.com/api/health')
+    .catch(() => {});
+}, 14 * 60 * 1000);
