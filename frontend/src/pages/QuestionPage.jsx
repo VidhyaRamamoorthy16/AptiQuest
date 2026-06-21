@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
+import api from '../services/api'
 import toast from 'react-hot-toast'
 
 const QuestionPage = () => {
@@ -17,7 +17,7 @@ const QuestionPage = () => {
 
   const fetchQuestion = async () => {
     try {
-      const response = await axios.get(`/api/questions/${id}`)
+      const response = await api.get(`/questions/${id}`)
       setQuestion(response.data.question)
     } catch (error) {
       toast.error('Failed to load question')
@@ -33,14 +33,9 @@ const QuestionPage = () => {
     }
 
     try {
-      const response = await axios.post(
-        `/api/questions/${id}/attempt`,
-        { selectedAnswer },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        }
+      const response = await api.post(
+        `/questions/${id}/attempt`,
+        { selectedAnswer }
       )
       setResult(response.data)
       setSubmitted(true)
